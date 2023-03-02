@@ -386,7 +386,7 @@ window.onkeydown = function(e){
     if(e.which == 32){
         if(audioElement.paused || audioElement<=0) {
             makeAllPlays();
-            mainSongPlaying;
+            mainSongPlaying();
             audioElement.play();
             currentPlay(songIndex);
         }
@@ -397,4 +397,5 @@ window.onkeydown = function(e){
             currentPause(songIndex);          
         }
     }
+    return !(e.keyCode == 32 && e.target == document.body);
 }
