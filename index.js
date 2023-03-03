@@ -122,45 +122,7 @@ let songs = [
     {
         songName: "Luna", filePath: "./songs/1.mp3", coverPath: "./covers/1.jpg", Album: "Neoni", DateAdded: '12-12-11', duration: '3:40',
     },
-    {
-        songName: "Daydream", filePath: "./songs/2.mp3", coverPath: "./covers/2.jpg",Album: "paTA naHI kAUN!", DateAdded: '1-12-15', duration: '3:40',
-    },
-    {
-        songName: "Levitate by Neoni", filePath: "./songs/3.mp3", coverPath: "./covers/3.jpg",Album: "Neoni", DateAdded: '17-12-11', duration: '3:40',
-    },
-    {
-        songName: "Royality", filePath: "./songs/4.mp3", coverPath: "./covers/4.jpg",Album: "Neoni", DateAdded: '12-11-11', duration: '3:40',
-    },
-    {
-        songName: "Jai Ho", filePath: "./songs/5.mp3", coverPath: "./covers/5.jpg",Album: "Jagat", DateAdded: '21-12-11', duration: '3:40',
-    },
-    {
-        songName: "JoJo", filePath: "./songs/6.mp3", coverPath: "./covers/6.jpg",Album: "Bizzare ;)", DateAdded: '12-12-12', duration: '3:40',
-    },
-    {
-        songName: "Traitor's Requiem", filePath: "./songs/7.mp3", coverPath: "./covers/7.jpg",Album: "UraginiMono", DateAdded: '07-12-11', duration: '3:40',
-    },
-    {
-        songName: "Luna", filePath: "./songs/1.mp3", coverPath: "./covers/1.jpg", Album: "Neoni", DateAdded: '12-12-11', duration: '3:40',
-    },
-    {
-        songName: "Daydream", filePath: "./songs/2.mp3", coverPath: "./covers/2.jpg",Album: "paTA naHI kAUN!", DateAdded: '1-12-15', duration: '3:40',
-    },
-    {
-        songName: "Levitate by Neoni", filePath: "./songs/3.mp3", coverPath: "./covers/3.jpg",Album: "Neoni", DateAdded: '17-12-11', duration: '3:40',
-    },
-    {
-        songName: "Royality", filePath: "./songs/4.mp3", coverPath: "./covers/4.jpg",Album: "Neoni", DateAdded: '12-11-11', duration: '3:40',
-    },
-    {
-        songName: "Jai Ho", filePath: "./songs/5.mp3", coverPath: "./covers/5.jpg",Album: "Jagat", DateAdded: '21-12-11', duration: '3:40',
-    },
-    {
-        songName: "JoJo", filePath: "./songs/6.mp3", coverPath: "./covers/6.jpg",Album: "Bizzare ;)", DateAdded: '12-12-12', duration: '3:40',
-    },
-    {
-        songName: "Traitor's Requiem", filePath: "./songs/7.mp3", coverPath: "./covers/7.jpg",Album: "UraginiMono", DateAdded: '07-12-11', duration: '3:40',
-    },
+    
 ];
 
 
@@ -293,9 +255,10 @@ songItemPlay.forEach((element)=>{
         eleIndex = songIndex;
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
-
+        let nIndex = songIndex%7;
+        
         if(audioElement.paused || audioElement.currentTime <=0){
-            audioElement.src = `./songs/${songIndex+1}.mp3`;
+            audioElement.src = `./songs/${nIndex+1}.mp3`;
             masterSongName.innerText = songs[songIndex].songName;
             audioElement.currentTime = 0;
             audioElement.play();
@@ -317,8 +280,7 @@ songItemPlay.forEach((element)=>{
             }
         }
         else{
-            
-            audioElement.src = `./songs/${songIndex+1}.mp3`;
+            audioElement.src = `./songs/${nIndex+1}.mp3`;
             masterSongName.innerText = songs[songIndex].songName;
             audioElement.currentTi
             audioElement.play();
@@ -333,31 +295,32 @@ songItemPlay.forEach((element)=>{
 
 // Configuring Next and Prev Buttons
 document.getElementById('next').addEventListener('click', ()=>{
-    if(songIndex>35){
+    if(songIndex>=35){
         songIndex=0;
     }
     else {
         songIndex +=1;
     }
-
-    audioElement.src = `./songs/${songIndex}.mp3`;
+    nIndex = songIndex%7;
+    audioElement.src = `./songs/${nIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
     mainSongPlaying();
-
+    
     makeAllPlays();
     currentPlay(songIndex);
 });
 document.getElementById('previous').addEventListener('click', ()=>{
     if(songIndex<=0){
-        songIndex=34;
+        songIndex=35;
     }
     else {
         songIndex -=1;
     }
+    nIndex = songIndex%7;
 
-    audioElement.src = `./songs/${songIndex}.mp3`;
+    audioElement.src = `./songs/${nIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -398,4 +361,8 @@ window.onkeydown = function(e){
         }
     }
     return !(e.keyCode == 32 && e.target == document.body);
+}
+window.onkeyup = function(e){
+    return !(e.keyCode == 32 && e.target == document.body);
+
 }

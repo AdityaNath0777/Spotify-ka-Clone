@@ -17,7 +17,6 @@ table, th, td {
 
 /* ###  Main-container  ### */
 .main-container{
-    /* height: max-content; */
     display: flex;
     flex-direction: column;
 }
@@ -35,7 +34,6 @@ table, th, td {
     .left-container{
         box-sizing: border-box;
         width:15%;
-        /* overflow-x: hidden; */
         left:0;
         display: block;
         position: fixed;
@@ -70,7 +68,7 @@ table, th, td {
         align-items: center;
     
         font-weight: bolder;
-        font-size: 1.6rem;
+        font-size: 1.6em;
     }
     .brand img{
         width: 40px;
@@ -119,12 +117,9 @@ table, th, td {
     .extras{
         display: block;
         width: 100%;
-        /* justify-content: space-between; */
     }
     .extras i{
-        color: rgb(56, 207, 109);
-        /* padding-right: 30px; */
-        /* margin-top: auto; */
+        color: #38cf6d;
     }
     
     .songList-container{
@@ -132,12 +127,17 @@ table, th, td {
         margin-right: 20px;
         margin-bottom: 200px;
         width: 97%;
-        color:rgba(158, 158, 158, 0.897);
+        color:#9e9e9edb;
         
         
     }
     .table-head{
         border-bottom: 1px solid gray;
+        text-align: left;
+}
+    .table-head .Date-added, .table-head .Duration{
+        /* border-bottom: 1px solid gray; */
+        text-align: center;
 }
 .rank{
     cursor: pointer;
@@ -164,7 +164,7 @@ table, th, td {
 } */
 tbody tr:hover{
     color: white;
-    background-color: rgba(185, 171, 171, 0.745);
+    background-color: #b9ababbe;
 }
 
 .table-row{
@@ -177,12 +177,13 @@ tbody tr:hover{
 .bottom-container{
     bottom:0px;
     height:max-content;
+    padding: 5px;
     width: 100%;
     z-index: 20;
     position: fixed;
     display: block;
 
-    background-color: rgb(38, 24, 24);
+    background-color: #261818;
 }
 .current-song{
     display: flex;
@@ -254,13 +255,9 @@ tbody tr:hover{
 
 .features{
     width: 25%;
-    /* box-sizing: content-box; */
     display: flex;
     flex-direction: row;
     right:0;
-    /* margin: auto 0 auto 0; */
-    /* padding-left:10rem; */
-    /* background-color:  rgb(76, 50, 50); */
     align-items: center;
     justify-content: right;
 }
@@ -277,16 +274,17 @@ tbody tr:hover{
 
 
 .volume-container {
-    width: auto; /* Width of the outside container */
+    width: 130px; /* Width of the outside container */
     right: 0;
+
   }
-  
+
   /* The slider itself */
   #vol-bar {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 150px; /* Full-width */
-    height: 10px; /* Specified height */
+    width: 100px; /* Full-width */
+    height: 5px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -294,7 +292,6 @@ tbody tr:hover{
     transition: opacity .2s;
     border-radius: 10px ;
   }
-  
   /* Mouse-over effects */
   #vol-bar:hover {
     opacity: 1; /* Fully shown on mouse-over */
@@ -304,16 +301,16 @@ tbody tr:hover{
   #vol-bar::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 15px; /* Set a specific slider handle width */
-    height: 15px; /* Slider handle height */
+    width: 9px; /* Set a specific slider handle width */
+    height: 9px; /* Slider handle height */
     border-radius: 50%;
     background: #04AA6D; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
   
   #vol-bar::-moz-range-thumb {
-    width: 15px; /* Set a specific slider handle width */
-    height: 15px; /* Slider handle height */
+    width: 9px; /* Set a specific slider handle width */
+    height: 9px; /* Slider handle height */
     background: #04AA6D; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
