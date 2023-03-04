@@ -41,6 +41,7 @@ table, th, td {
     }
     #nav{
         font-size: 1.2rem;
+        color: #b2adaddb;
     }
     #nav ul li{
         list-style:none;
@@ -50,6 +51,11 @@ table, th, td {
     #nav li i{
         text-align: center;
         width: 30px;
+        padding-right: 7px;
+    }
+    #nav li:hover{
+        color: whitesmoke;
+        transition: color .3s;
     }
     .playLists{
         height: 45vh;
@@ -58,15 +64,20 @@ table, th, td {
         
     }
     .playLists ul li{
+        color: #b2adaddb;
         list-style: none;
         font-size: 15px;
         margin: 7%;
         cursor: pointer;
     }
+    .playLists ul li:hover{
+        color: whitesmoke;
+        transition: color .2s;
+    }
     .brand{
         display: flex;
         align-items: center;
-    
+        color: whitesmoke;
         font-weight: bolder;
         font-size: 1.6em;
     }
@@ -89,8 +100,8 @@ table, th, td {
         height: 50%;
         display: flex;
         flex-direction: column;
-        background-color: rgb(170, 36, 36);
-        background-image: linear-gradient(to right bottom,  rgb(31, 112, 241),rgb(199, 24, 12) ) ;
+        background-color: #aa2424;
+        background-image: linear-gradient(to right bottom,  #1f70f1,#c7180c ) ;
         padding-bottom: 10px;
     }
     .playlist-info h1{
@@ -110,7 +121,7 @@ table, th, td {
         margin-left: 30px;
     }
     .playlist{
-        background-image: linear-gradient(to bottom , rgb(15, 15, 84) 10%, rgb(0,0,0) 20%);
+        background-image: linear-gradient(to bottom , #0f0f54 10%, #000000 20%);
         padding: 20px;
 
     }
@@ -134,17 +145,17 @@ table, th, td {
     .table-head{
         border-bottom: 1px solid gray;
         text-align: left;
-}
+    }
     .table-head .Date-added, .table-head .Duration{
         /* border-bottom: 1px solid gray; */
         text-align: center;
-}
-.rank{
-    cursor: pointer;
-    margin: 1px;
-    text-align: left;
-}
-.title{
+    }
+    .rank{
+        cursor: pointer;
+        margin: 1px;
+        text-align: left;
+    }
+    .title{
     column-width: 35rem;
     cursor: pointer;
     text-align: left;
@@ -165,13 +176,13 @@ table, th, td {
 tbody tr:hover{
     color: white;
     background-color: #b9ababbe;
+    transition: all .3s;
 }
 
 .table-row{
     justify-content: space-between;
     margin: 2px 0 2px 0;
 }
-
 
 /* *** bottom-container *** */
 .bottom-container{

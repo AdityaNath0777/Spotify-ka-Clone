@@ -12,7 +12,7 @@ let songDuration = audioElement.duration;
 
 let masterSongName = document.getElementById('master-song-name');
 
-// 35-songs currently
+// 36-songs currently
 let songs = [
     {
         songName: "Luna", filePath: "./songs/1.mp3", coverPath: "./covers/1.jpg", Album: "Neoni", DateAdded: '12-12-11', duration: '3:40',
@@ -125,7 +125,8 @@ let songs = [
     
 ];
 
-
+let totalDuration = 0;
+let noOfSongs = songs.length;
 // -> Display the Songs in the SongList Container
 songItems.forEach((element, i)=>{
     // element.getElementsByClassName('rank').classList.add('fas fa-play');
@@ -134,9 +135,13 @@ songItems.forEach((element, i)=>{
     element.getElementsByClassName('album')[0].innerHTML = songs[i].Album;
     element.getElementsByClassName('date-added')[0].innerHTML = songs[i].DateAdded;
     element.getElementsByClassName('duration')[0].innerHTML = songs[i].duration;
+
+    totalDuration += songs[i].duration;
 });
 
-
+let songInfo = document.getElementsByClassName('song-info');
+    // songInfo.getElementById('master-song-name')[0].innerText = songs[songIndex].songName;
+    // songInfo.getElementById('master-album-name')[0].innerText = songs[songIndex].Album;
 
 // play to pause  &  pause to play icon transition
 const currentPlay = (sIndex)=>{
@@ -250,8 +255,6 @@ songItemPlay.forEach((element)=>{
         console.log("songItemPlay(rank) ke event listen ho rahe hain", e.target);
         makeAllPlays();
         songIndex = parseInt(e.target.id);
-        // e.target.innerHTML = '';
-        // e.target.innerHTML = '<i class="fas fa-pause"></i>';
         eleIndex = songIndex;
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
@@ -336,12 +339,6 @@ let volumeBar = document.getElementById('vol-bar');
 volumeBar.addEventListener('change', ()=>{
     audioElement.volume = volumeBar.value/100;
 });
-
-
-
-
-
-
 
 
 // -> Keyboard key Functions
