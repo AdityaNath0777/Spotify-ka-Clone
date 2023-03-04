@@ -15,7 +15,7 @@ let masterSongName = document.getElementById('master-song-name');
 // 36-songs currently
 let songs = [
     {
-        songName: "Luna", filePath: "./songs/1.mp3", coverPath: "./covers/1.jpg", Album: "Neoni", DateAdded: '12-12-11', duration: '3:40',
+        songName: "Luna", filePath: "./songs/1.mp3", coverPath: "./covers/1.jpg", Album: "Neoni", DateAdded: '12-12-11', duration: '03:20',
     },
     {
         songName: "Daydream", filePath: "./songs/2.mp3", coverPath: "./covers/2.jpg",Album: "paTA naHI kAUN!", DateAdded: '1-12-15', duration: '3:40',
@@ -135,25 +135,55 @@ songItems.forEach((element, i)=>{
     element.getElementsByClassName('album')[0].innerHTML = songs[i].Album;
     element.getElementsByClassName('date-added')[0].innerHTML = songs[i].DateAdded;
     element.getElementsByClassName('duration')[0].innerHTML = songs[i].duration;
-
+    
     totalDuration += songs[i].duration;
 });
 
-let songInfo = document.getElementsByClassName('song-info');
-    // songInfo.getElementById('master-song-name')[0].innerText = songs[songIndex].songName;
-    // songInfo.getElementById('master-album-name')[0].innerText = songs[songIndex].Album;
+// time-bar function
+const timeBar = (enterId, token)=>{
+if(token==0){
+    min = Math.floor(audioElement.currentTime/60);
+    sec = Math.floor(audioElement.currentTime%60);
+    if(min>0 && sec%60==0){
+        sec=0;
+    }
+    min=String(min).padStart(2, '0');
+    sec=String(sec).padStart(2, '0');
+}
+else if(token==1){
+    console.log(audioElement.duration);
+    min = Math.floor(audioElement.duration/60);
+    sec = Math.floor(audioElement.duration%60);
+    if(min>0 && sec%60==0){
+        sec=0;
+    }
+    min=String(min).padStart(2, '0');
+    sec=String(sec).padStart(2, '0');
 
+}
+    document.getElementById(`${enterId}`).innerHTML = `${min}:${sec}`;
+}
+
+// pre-loaded data
+const defaultState = ()=>{
+    document.getElementById('song-ends').innerHTML = songs[songIndex].duration;
+    document.getElementById('master-song-name').innerHTML = songs[songIndex].songName;
+    document.getElementById('master-album-name').innerHTML = songs[songIndex].Album;;
+}
+defaultState();
 // play to pause  &  pause to play icon transition
 const currentPlay = (sIndex)=>{
     let element = document.getElementById(sIndex);
-
+    
     element.classList.remove('fa-play');
     element.classList.add('fa-pause');
+    document.getElementById('master-album-name').innerHTML = songs[sIndex].Album
+    document.getElementById('master-song-name').innerHTML = songs[sIndex].songName;
     
 }
 const currentPause = (sIndex)=>{
     let element = document.getElementById(sIndex);
-
+    
     element.classList.remove('fa-pause');
     element.classList.add('fa-play');
 }
@@ -165,14 +195,14 @@ const mainSongPlaying = ()=>{
     masterPlay.classList.add('fa-pause-circle');
     mainPlay.classList.remove('fa-play-circle');
     mainPlay.classList.add('fa-pause-circle');
-
+    
 };
 const mainSongPaused = ()=>{
     masterPlay.classList.remove('fa-pause-circle');
     masterPlay.classList.add('fa-play-circle');
     mainPlay.classList.remove('fa-pause-circle');
     mainPlay.classList.add('fa-play-circle');
-
+    
 };
 
 masterPlay.addEventListener('click', ()=>{
@@ -180,7 +210,7 @@ masterPlay.addEventListener('click', ()=>{
         audioElement.play();
         mainSongPlaying();
         currentPlay(songIndex);
- 
+        
     }
     else {
         audioElement.pause();
@@ -205,33 +235,21 @@ mainPlay.addEventListener('click', ()=>{
 
 // Listen to Events
 // -> seconds to minutes
-const secToMin = (seconds)=>{
-    // hr = Math.ceil(seconds/3600);
-    min = Math.ceil(seconds/60);
-    sec = seconds%60;
-}
+// const secToMin = (seconds)=>{
+//     // hr = Math.ceil(seconds/3600);
+//     min = Math.ceil(seconds/60);
+//     sec = seconds%60;
+// }
 audioElement.addEventListener('timeupdate', ()=>{
     progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
     myTimeBar.value = progress;
     songDuration = audioElement.duration;
-    min = Math.floor(audioElement.currentTime/60);
-    sec = Math.floor(audioElement.currentTime%60);
-    if(min>0 && sec%60==0){
-        sec=0;
+    timeBar('song-starts', 0);
+    timeBar('song-ends', 1);
+    if(audioElement.currentTime==audioElement.duration){
+        playNextSong();
     }
-    min=String(min).padStart(2, '0');
-    sec=String(sec).padStart(2, '0');
-    document.getElementById('song-starts').innerHTML = `${min}:${sec}`;
-    min = Math.floor(audioElement.duration/60);
-    sec = Math.floor(audioElement.duration%60);
-    if(min>0 && sec%60==0){
-        sec=0;
-    }
-    min=String(min).padStart(2, '0');
-    sec=String(sec).padStart(2, '0');
-    document.getElementById('song-ends').innerHTML = `${min}:${sec}`;
 
-    console.log(Math.ceil(audioElement.currentTime));
 
 });
 
@@ -297,7 +315,7 @@ songItemPlay.forEach((element)=>{
 
 
 // Configuring Next and Prev Buttons
-document.getElementById('next').addEventListener('click', ()=>{
+const playNextSong = ()=>{
     if(songIndex>=35){
         songIndex=0;
     }
@@ -313,8 +331,12 @@ document.getElementById('next').addEventListener('click', ()=>{
     
     makeAllPlays();
     currentPlay(songIndex);
+
+}
+document.getElementById('next').addEventListener('click', ()=>{
+    playNextSong();
 });
-document.getElementById('previous').addEventListener('click', ()=>{
+const playPrevSong = ()=> {
     if(songIndex<=0){
         songIndex=35;
     }
@@ -331,13 +353,17 @@ document.getElementById('previous').addEventListener('click', ()=>{
 
     makeAllPlays();
     currentPlay(songIndex);
-});
+}
 
+document.getElementById('previous').addEventListener('click', ()=>{
+    playPrevSong();
+});
 
 // -> Volume Control
 let volumeBar = document.getElementById('vol-bar');
 volumeBar.addEventListener('change', ()=>{
     audioElement.volume = volumeBar.value/100;
+    volumeBar.title = `${Math.floor(volumeBar.value)}`;
 });
 
 
