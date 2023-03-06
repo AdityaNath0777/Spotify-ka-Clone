@@ -25,9 +25,11 @@ table, th, td {
 .top-container{
     top:0;
     display: flex;
+    box-sizing: border-box;
     flex-direction: row;
     z-index: 1;
     height: 90%;
+    width: 100vmax;
 }
 
     /*  -> left-container */
@@ -93,7 +95,7 @@ table, th, td {
     width: 85%;
     top:0;
     right:0; 
-    box-sizing: border-box;                   
+    box-sizing:border-box;                   
     height: fit-content;
     position: absolute;
     overflow: hidden;
@@ -192,7 +194,7 @@ tbody tr:hover{
 }
 /* song-lyrics */
 .lyrics-container{
-    margin-bottom: 150px;
+    margin-bottom: 50rem;
 }
 
 .hidden-container{
