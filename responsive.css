@@ -71,11 +71,17 @@
 
 
 @media (max-width: 500px){
-    .playlist-info{
-        font-size: 1rem;
+    #right-container, .bottom-container{
+        width: 100vw;
     }
-    .brand img{
-        width: 20px;
+    .playlist-info{
+        font-size: .6rem;
+    }
+    .playlist-info img{
+        width: 120px;
+        height: 120px;
+        margin-top: 5px;
+        margin-bottom: 10px;
     }
 
     
