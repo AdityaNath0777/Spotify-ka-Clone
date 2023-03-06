@@ -89,13 +89,14 @@ table, th, td {
         padding: 0 7px;
     }
     /*  -> right-container */
-    .right-container{
+    #right-container{
     width: 85%;
+    top:0;
     right:0; 
     box-sizing: border-box;                   
     height: fit-content;
     position: absolute;
-    overflow-x: hidden;
+    overflow: hidden;
     display: block;
 }
 /*  playlist */
@@ -189,6 +190,56 @@ tbody tr:hover{
     justify-content: space-between;
     margin: 2px 0 2px 0;
 }
+/* song-lyrics */
+.lyrics-container{
+    margin-bottom: 150px;
+}
+
+.hidden-container{
+    display:block;
+    width: 85%;
+    height: max-content;
+    top:0;
+    right: 0;
+    position:absolute;
+    font-size: 1.7rem;
+    padding-top: 150px;
+    padding-bottom: 400px;
+    background-color: #0f0f54;
+    color: whitesmoke;
+
+    line-height: 50px;
+
+    /* visibility: hidden; */
+}
+#song-lyrics{
+ /* display: none; */
+ visibility: hidden;
+ /* z-index: 20; */
+}
+#Queue-container{
+    /* display: block; */
+    box-sizing: border-box;
+    visibility: hidden;
+    padding: 25px;
+    /* z-index: 20; */
+}
+.q_title{
+    column-width: 40rem;
+    cursor: pointer;
+    text-align: left;
+}
+.q_album{
+    column-width: 35rem;
+    cursor: pointer;
+    text-align: left;
+}
+.q_duration{
+    column-width: 10rem;
+    text-align: center;
+}
+
+
 
 /* *** bottom-container *** */
 .bottom-container{
@@ -196,7 +247,7 @@ tbody tr:hover{
     height:max-content;
     padding: 5px;
     width: 100%;
-    z-index: 20;
+    z-index: 50;
     position: fixed;
     display: block;
 

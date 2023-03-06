@@ -31,7 +31,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="right-container">
+            <div id="right-container" >
                 <div class="playlist-info">
                     <h3 style="margin:20px">Playlist</h3>
                     <div class="playlist-name">
@@ -176,6 +176,89 @@
                 </div>
             </div>
         </div>
+        <div class="hide-this-container">
+            <div class="lyrics-container hidden-container"  class="hide">
+                <pre id="song-lyrics" >
+                    🎵🎵
+                    Ramayana is the first Mahakavya of Sanatan Dharam’s
+                    itihaas composed by Maharishi Valmiki.
+                    It reflects the prime values of Indian culture
+                    and has great potential to shape the ideal cultural
+                    society of India.
+                    🎵🎵
+                    It is a national epic and scripture for us.
+                    Ramayana tells the story of Prince Raam
+                    who was exiled from his kingdom Ayodhya
+                    with his wife, Sita and his brother, Lakshman
+                    for 14 years with some constraints.
+                    During the last year of his exile,
+                    his wife Sita was kidnapped
+                    by demon king Raavan
+                    🎵🎵
+                    and then went on a journey
+                    to rescue her with help of an army
+                    of bears and vanars primarly known as vanar
+                    sena, whom he befriended on his journey. 
+                    🎵🎵
+                    After facing many hurdles 
+                    prince Raam managed to rescue her life 
+                    while keeping his all of the promises 
+                    with everyone, his Guru, wife, father, 
+                    mother, brother, friend, etc. 
+                    This story of Raam is written 
+                    in poetry form, Kavya.
+                    🎵🎵
+                </pre>
+            </div>
+            <div id="Queue-container" class="hidden-container">
+                    <h2>Queue</h2>
+                    <div id="currentQ-song">
+                        <h3>Now Playing</h3>
+                        <div id="currentQ-song-playing">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="rank fas fa-play" id="master-song-rank"></td>
+                                        <td id="master-song-namee" class="q_title"></td>
+                                        <td id="master-album-name" class="q_album"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="next-Qsong" >
+                        <h3>Next from JoJo</h3>
+                        <table>
+                            <tbody>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_0"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_1"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_2"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_3"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_4"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_5"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                                <tr class="table-row ">
+                                    <td class="rank fas fa-play" id="q_6"></td>  <td class="q_title">Levitate</td>    <td class="q_album">Neoni</td> <td class="q_duration">1:20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="bottom-container" id="player">
             <div class="current-song">
                 <div class="song-info">
@@ -205,9 +288,9 @@
                     </div>
                 </div>
                 <div class="features">
-                    <div><i class="fas fa-microphone" title="lyrics"></i></div>
-                    <div><i class="fa fa-reorder" title="Queue"></i></div>
-                    <div><i class="fa fa-mobile" title="device"></i></div>
+                    <div><i class="fas fa-microphone" id="lyrics-feature" title="lyrics"></i></div>
+                    <div><i class="fa fa-reorder" id="queue-feature" title="Queue"></i></div>
+                    <div><i class="fa fa-mobile" id="device-feature" title="device"></i></div>
                     <div class="volume-container" >
                         <i class="fas fa-volume-up" title="volume"></i>
                         <!-- <div id="volume-bar"></div> -->

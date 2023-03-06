@@ -167,7 +167,7 @@ else if(token==1){
 // pre-loaded data
 const defaultState = ()=>{
     document.getElementById('song-ends').innerHTML = songs[songIndex].duration;
-    document.getElementById('master-song-name').innerHTML = songs[songIndex].songName;
+    document.getElementById('master-song-namee').innerHTML = songs[songIndex].songName;
     document.getElementById('master-album-name').innerHTML = songs[songIndex].Album;;
 }
 defaultState();
@@ -178,7 +178,7 @@ const currentPlay = (sIndex)=>{
     element.classList.remove('fa-play');
     element.classList.add('fa-pause');
     document.getElementById('master-album-name').innerHTML = songs[sIndex].Album
-    document.getElementById('master-song-name').innerHTML = songs[sIndex].songName;
+    document.getElementById('master-song-namee').innerText = songs[sIndex].songName;
     
 }
 const currentPause = (sIndex)=>{
@@ -234,12 +234,6 @@ mainPlay.addEventListener('click', ()=>{
 
 
 // Listen to Events
-// -> seconds to minutes
-// const secToMin = (seconds)=>{
-//     // hr = Math.ceil(seconds/3600);
-//     min = Math.ceil(seconds/60);
-//     sec = seconds%60;
-// }
 audioElement.addEventListener('timeupdate', ()=>{
     progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
     myTimeBar.value = progress;
@@ -249,14 +243,11 @@ audioElement.addEventListener('timeupdate', ()=>{
     if(audioElement.currentTime==audioElement.duration){
         playNextSong();
     }
-
-
 });
 
 //   changing the current time of progress using progress time bar
 myTimeBar.addEventListener('change', ()=>{
     audioElement.currentTime = myTimeBar.value*audioElement.duration/100;
-
 });
 
 
@@ -387,5 +378,64 @@ window.onkeydown = function(e){
 }
 window.onkeyup = function(e){
     return !(e.keyCode == 32 && e.target == document.body);
-
 }
+
+
+
+
+
+// lyrics-container
+
+var rightCont = document.getElementById('right-container');
+let hideContainer = document.getElementsByClassName('hide');
+
+let lyricsFeature = document.getElementById('lyrics-feature');
+let songLyrics = document.getElementById('song-lyrics');
+
+rightCont.style.display = 'block';
+
+lyricsFeature.addEventListener('click', ()=>{
+    console.log(rightCont.style.display);
+    if(songLyrics.style.visibility!=='visible'){
+        // console.log('right cont -> display is none')
+        rightCont.style.display = 'none';
+        // hideContainer.visibility = 'hidden';
+        qContainer.style.visibility= 'hidden';
+        songLyrics.style.visibility = 'visible';
+        // songLyrics.style.transition= 'visibility 0.7s ease-in-out';
+    }
+    else{ 
+        rightCont.style.display = 'block';
+        songLyrics.style.visibility = 'hidden';
+        // hideContainer.visibility = 'hidden';
+        // songLyrics.style.transition= 'visibility 0.7s ease-in-out';
+        // console.log('right cont -> display is block');
+    }
+    // console.log('Lyrics feature has been chosen');
+});
+
+
+
+
+
+//  Queue-container
+let qFeature = document.getElementById('queue-feature');
+let qContainer = document.getElementById('Queue-container');
+qContainer.style.visibility = 'hidden';
+qFeature.addEventListener('click', ()=>{
+    console.log('Queue-feature has been chosen');
+    console.log(rightCont.style.display);
+    if(qContainer.style.visibility!=='visible'){
+        
+        rightCont.style.display='none';
+        // hideContainer.visibility = 'hidden';
+        songLyrics.style.visibility = 'hidden';
+        qContainer.style.visibility= 'visible';
+    }
+    else{
+        // yaani right container use ho raha hai
+        rightCont.style.display = 'block';
+        qContainer.style.visibility= 'hidden';
+        // hideContainer.visibility = 'hidden';
+    }
+})
