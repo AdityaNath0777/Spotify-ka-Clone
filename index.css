@@ -18,9 +18,16 @@ table, th, td {
 /* ###  Main-container  ### */
 .main-container{
     display: flex;
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
     flex-direction: column;
 }
-
+.mega-top{
+    display: block;
+    width: 100%;
+    height: auto;
+}
 /* *** top-container *** */
 .top-container{
     top:0;
@@ -29,7 +36,8 @@ table, th, td {
     flex-direction: row;
     z-index: 1;
     height: 90%;
-    width: 100vmax;
+    width: 100%;
+    /* justify-content: safe; */
 }
 
     /*  -> left-container */
@@ -39,11 +47,13 @@ table, th, td {
         left:0;
         display: block;
         position: fixed;
-        overflow-x: hidden;
+        overflow: hidden;
+        /* overflow-wrap: normal; */
     }
     #nav{
         font-size: 1.2rem;
         color: #b2adaddb;
+        box-sizing: border-box;
     }
     #nav ul li{
         list-style:none;
@@ -59,13 +69,20 @@ table, th, td {
         color: whitesmoke;
         transition: color .4s;
         transition-timing-function: ease-in-out;
-
+        
     }
     .playLists{
         height: 45vh;
+        /* position:; */
         padding-top: 20px;
         border-top: 2px solid grey;
+        overflow-y: scroll;
+        scrollbar-width: none;
         
+    }
+    .playLists::-webkit-scrollbar{
+        /* for safari and chrome */
+        display: none;
     }
     .playLists ul li{
         color: #b2adaddb;
@@ -90,19 +107,26 @@ table, th, td {
         width: 40px;
         padding: 0 7px;
     }
+
     /*  -> right-container */
     #right-container{
-    width: 85%;
-    top:0;
-    right:0; 
-    box-sizing:border-box;                   
-    height: fit-content;
-    position: absolute;
-    overflow: hidden;
-    display: block;
-}
-/*  playlist */
-.playlist-info{        
+        width: 85%;
+        top:0;
+        right:0; 
+        box-sizing:border-box;                   
+        height: 90vh;
+        position: absolute;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        display: block;
+        scrollbar-width: none;
+        /* overflow-wrap: normal; */
+    }
+    #right-container::-webkit-scrollbar{
+        display: none;
+    }
+    /*  playlist */
+    .playlist-info{        
         height: 50%;
         display: flex;
         flex-direction: column;
@@ -198,7 +222,7 @@ tbody tr:hover{
 }
 
 .hidden-container{
-    display:block;
+    display:none;
     width: 85%;
     height: max-content;
     top:0;
@@ -207,7 +231,7 @@ tbody tr:hover{
     font-size: 1.7rem;
     padding-top: 150px;
     padding-bottom: 400px;
-    background-color: #0f0f54;
+    background-color: #3535ad;
     color: whitesmoke;
 
     line-height: 50px;
@@ -248,18 +272,22 @@ tbody tr:hover{
     bottom:0px;
     height:max-content;
     padding: 5px;
-    width: 100%;
+    width: inherit;
+    max-width: inherit;
     z-index: 50;
     position: fixed;
     display: block;
-
+    
+    box-sizing: border-box;
     background-color: #261818;
 }
 .current-song{
     display: flex;
     bottom: 0;
+    width: 95%;
+    /* justify-content:space-around; */
 }
-.current-song .song-info{
+.song-info{
     font-family: Georgia, 'Times New Roman', Times, serif;
     width: 25%;
     left:0;
@@ -344,9 +372,8 @@ tbody tr:hover{
 
 
 .volume-container {
-    width: 130px; /* Width of the outside container */
+    width: 127px; /* Width of the outside container */
     right: 0;
-
   }
 
   /* The slider itself */
@@ -383,4 +410,38 @@ tbody tr:hover{
     height: 9px; /* Slider handle height */
     background: #04AA6D; /* Green background */
     cursor: pointer; /* Cursor on hover */
+  }
+
+
+  #bottom-nav{
+      display: none;
+      height: 13%;
+      width: 100%;
+      background-color: #04AA6D;
+      background-color: #4dcc7a;
+      
+  }
+
+   #nav-2{
+      display: flex;
+      height: 100%;
+      align-items: center;
+  }
+  #nav-2 ul{
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      text-align: center;
+      width: 100%;;
+      justify-content: space-evenly;
+      margin: 0 auto;
+      padding-top: auto;
+      /* overflow: hidden; */
+      align-items: center;
+
+  } */
+  #nav-2 ul li{
+    /* flex-direction: column; */
+    /* display:inline-block; */
+    margin: 10px auto 10px auto;
   }

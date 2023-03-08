@@ -393,20 +393,25 @@ let lyricsFeature = document.getElementById('lyrics-feature');
 let songLyrics = document.getElementById('song-lyrics');
 
 rightCont.style.display = 'block';
-
+songLyrics.style.visibility='hidden';
+songLyrics.style.display='none';
 lyricsFeature.addEventListener('click', ()=>{
-    console.log(rightCont.style.display);
+    console.log("right: ",rightCont.style.display);
+    console.log("songLyrics: ", songLyrics.style.display);
     if(songLyrics.style.visibility!=='visible'){
         // console.log('right cont -> display is none')
         rightCont.style.display = 'none';
         // hideContainer.visibility = 'hidden';
         qContainer.style.visibility= 'hidden';
+        qContainer.style.display='none';
         songLyrics.style.visibility = 'visible';
+        songLyrics.style.display='block';
         // songLyrics.style.transition= 'visibility 0.7s ease-in-out';
     }
     else{ 
         rightCont.style.display = 'block';
         songLyrics.style.visibility = 'hidden';
+        songLyrics.style.display='none';
         // hideContainer.visibility = 'hidden';
         // songLyrics.style.transition= 'visibility 0.7s ease-in-out';
         // console.log('right cont -> display is block');
@@ -421,6 +426,7 @@ lyricsFeature.addEventListener('click', ()=>{
 //  Queue-container
 let qFeature = document.getElementById('queue-feature');
 let qContainer = document.getElementById('Queue-container');
+qContainer.style.display = 'none';
 qContainer.style.visibility = 'hidden';
 qFeature.addEventListener('click', ()=>{
     console.log('Queue-feature has been chosen');
@@ -429,12 +435,17 @@ qFeature.addEventListener('click', ()=>{
         
         rightCont.style.display='none';
         // hideContainer.visibility = 'hidden';
+        songLyrics.style.display='none';
         songLyrics.style.visibility = 'hidden';
+
+        qContainer.style.display='block';
         qContainer.style.visibility= 'visible';
     }
     else{
         // yaani right container use ho raha hai
+
         rightCont.style.display = 'block';
+        qContainer.style.display = 'none';
         qContainer.style.visibility= 'hidden';
         // hideContainer.visibility = 'hidden';
     }
