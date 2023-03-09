@@ -110,6 +110,7 @@ table, th, td {
 
     /*  -> right-container */
     #right-container{
+        display: block;
         width: 85%;
         top:0;
         right:0; 
@@ -118,7 +119,6 @@ table, th, td {
         position: absolute;
         overflow-x: hidden;
         overflow-y: scroll;
-        display: block;
         scrollbar-width: none;
         /* overflow-wrap: normal; */
     }
@@ -222,22 +222,39 @@ tbody tr:hover{
 }
 
 .hidden-container{
-    display:none;
-    width: 85%;
-    height: max-content;
+    display: none;
+    width: 85vw;
+    max-width: 85%;
     top:0;
-    right: 0;
-    position:absolute;
+    right:0; 
+    box-sizing:border-box;                   
+    /* height: max-content; */
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    scrollbar-width: none;
+
     font-size: 1.7rem;
     padding-top: 150px;
     padding-bottom: 400px;
-    background-color: #3535ad;
+    
     color: whitesmoke;
-
+    background-color: #3535ad;
     line-height: 50px;
-
-    /* visibility: hidden; */
+    
+   /* height: 90%; */
+    /* max-height: ; */
+    visibility: hidden;
 }
+.hidden-container::-webkit-scrollbar{
+    display: none;
+    width: 0 !important;
+    /* scroll-behavior: smooth; */
+}
+pre {
+    margin: 0 2rem;
+  }
+
 #song-lyrics{
  /* display: none; */
  visibility: hidden;
