@@ -402,6 +402,8 @@ lyricsFeature.addEventListener('click', ()=>{
         // console.log('right cont -> display is none')
         rightCont.style.display = 'none';
         // hideContainer.visibility = 'hidden';
+        aboutPage.style.display='none';
+        aboutPage.style.visibility = 'hidden';
         qContainer.style.visibility= 'hidden';
         qContainer.style.display='none';
         songLyrics.style.visibility = 'visible';
@@ -437,16 +439,57 @@ qFeature.addEventListener('click', ()=>{
         // hideContainer.visibility = 'hidden';
         songLyrics.style.display='none';
         songLyrics.style.visibility = 'hidden';
-
+        aboutPage.style.display='none';
+        aboutPage.style.visibility = 'hidden';
+        
         qContainer.style.display='block';
         qContainer.style.visibility= 'visible';
     }
     else{
         // yaani right container use ho raha hai
-
+        
         rightCont.style.display = 'block';
         qContainer.style.display = 'none';
         qContainer.style.visibility= 'hidden';
         // hideContainer.visibility = 'hidden';
     }
 })
+
+
+let aboutLink = Array.from(document.getElementsByClassName("about-link"));
+let aboutPage = document.getElementById('About-page');
+aboutPage.style.display = 'none';
+aboutPage.style.visibility = 'hidden';
+// here, we're using Array.from and foreach 
+// to listen events,
+// bcz -> class may have multiple elements, so we've to loop for each element
+aboutLink.forEach((element) =>{
+    element.addEventListener('click', (e)=>{
+        // alert("you've clicked on About");
+
+        console.log("you've clicked on About: ", e);
+        if(aboutPage.style.display === 'none'){
+            rightCont.style.display = 'none';
+
+            aboutPage.style.display = 'block';
+            aboutPage.style.visibility = 'visible';
+
+            qContainer.style.display = 'none';
+            songLyrics.style.display = 'none';
+            qContainer.style.visibility = 'hidden';
+            songLyrics.style.visibility = 'hidden';
+        }
+        else {
+            rightCont.style.display = 'block';
+            
+            aboutPage.style.display = 'none';
+            aboutPage.style.visibility = 'hidden';
+        }
+    });
+});
+
+// document.body.addEventListener('click', function (evt) {
+//     if (evt.target.className === 'fa-info') {
+//         alert("you've clicked on About: ",this)
+//     }
+// }, false);
