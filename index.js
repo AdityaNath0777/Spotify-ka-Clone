@@ -128,15 +128,37 @@ let songs = [
 let totalDuration = 0;
 let noOfSongs = songs.length;
 // -> Display the Songs in the SongList Container
-songItems.forEach((element, i)=>{
+songTable = document.getElementById('song-table-body');
+songs.forEach((element, i)=>{
+    songTable.innerHTML += `<tr class="table-row songItem">
+    <td class = "rank fas fa-play" id=${i}></td>
+    <td class = "title">${element.songName}</td>
+    <td class = "album">${element.Album}</td>
+    <td class = "date-added">${element.DateAdded}</td>
+    <td class = "duration">${element.duration}</td>
+    </tr>`
     // element.getElementsByClassName('rank').classList.add('fas fa-play');
     // element.getElementsByClassName('rank')[0].innerHTML = i+1;
-    element.getElementsByClassName('title')[0].innerHTML = songs[i].songName;
-    element.getElementsByClassName('album')[0].innerHTML = songs[i].Album;
-    element.getElementsByClassName('date-added')[0].innerHTML = songs[i].DateAdded;
-    element.getElementsByClassName('duration')[0].innerHTML = songs[i].duration;
+    // element.getElementsByClassName('title')[0].innerHTML = songs[i].songName;
+    // element.getElementsByClassName('album')[0].innerHTML = songs[i].Album;
+    // element.getElementsByClassName('date-added')[0].innerHTML = songs[i].DateAdded;
+    // element.getElementsByClassName('duration')[0].innerHTML = songs[i].duration;
     
     totalDuration += songs[i].duration;
+});
+
+let qTable = document.getElementById('queue-table-body');
+songs.forEach((element, j)=>{
+    if(j!==0)
+    {
+        // continue;
+        qTable.innerHTML += `<tr class="table-row">
+        <td class = "rank fas fa-play" id=q_${j}></td>
+        <td class = "q_title">${element.songName}</td>
+        <td class = "q_album">${element.Album}</td>
+        <td class = "q_duration">${element.duration}</td>
+        </tr>`
+    };
 });
 
 // time-bar function
@@ -167,8 +189,10 @@ else if(token==1){
 // pre-loaded data
 const defaultState = ()=>{
     document.getElementById('song-ends').innerHTML = songs[songIndex].duration;
-    document.getElementById('master-song-namee').innerHTML = songs[songIndex].songName;
+    document.getElementById('master-song-name').innerHTML = songs[songIndex].songName;
     document.getElementById('master-album-name').innerHTML = songs[songIndex].Album;;
+    document.getElementById('current-song-name').innerHTML = songs[songIndex].songName;
+    document.getElementById('current-album-name').innerHTML = songs[songIndex].Album;;
 }
 defaultState();
 // play to pause  &  pause to play icon transition
@@ -177,9 +201,10 @@ const currentPlay = (sIndex)=>{
     
     element.classList.remove('fa-play');
     element.classList.add('fa-pause');
-    document.getElementById('master-album-name').innerHTML = songs[sIndex].Album
-    document.getElementById('master-song-namee').innerText = songs[sIndex].songName;
-    
+    document.getElementById('master-album-name').innerText = songs[sIndex].Album
+    document.getElementById('master-song-name').innerText = songs[sIndex].songName;
+    document.getElementById('current-song-name').innerText = songs[songIndex].songName;
+    document.getElementById('current-album-name').innerText = songs[songIndex].Album;;
 }
 const currentPause = (sIndex)=>{
     let element = document.getElementById(sIndex);
@@ -398,7 +423,7 @@ songLyrics.style.display='none';
 lyricsFeature.addEventListener('click', ()=>{
     console.log("right: ",rightCont.style.display);
     console.log("songLyrics: ", songLyrics.style.display);
-    if(songLyrics.style.visibility!=='visible'){
+    if(songLyrics.style.display!=='block'){
         // console.log('right cont -> display is none')
         rightCont.style.display = 'none';
         // hideContainer.visibility = 'hidden';
@@ -433,7 +458,7 @@ qContainer.style.visibility = 'hidden';
 qFeature.addEventListener('click', ()=>{
     console.log('Queue-feature has been chosen');
     console.log(rightCont.style.display);
-    if(qContainer.style.visibility!=='visible'){
+    if(qContainer.style.display!=='block'){
         
         rightCont.style.display='none';
         // hideContainer.visibility = 'hidden';
@@ -468,7 +493,7 @@ aboutLink.forEach((element) =>{
         // alert("you've clicked on About");
 
         console.log("you've clicked on About: ", e);
-        if(aboutPage.style.display === 'none'){
+        if(aboutPage.style.display !== 'block'){
             rightCont.style.display = 'none';
 
             aboutPage.style.display = 'block';
