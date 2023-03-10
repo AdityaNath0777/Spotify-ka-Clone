@@ -2,7 +2,17 @@ console.log("Spotify me aapka haardik swagat hai 😎🕺");
 
 // Initialize the variables
 let songIndex = 0;
+let lyricsString = "";
 let audioElement = new Audio('./songs/1.mp3');
+fetch('./lyrics/1.txt')
+  .then(response => response.text())
+  .then(text => (lyricsString = text.slice()))
+
+
+console.log(lyricsString)
+// let lyricsFile = new FileReader();
+// console.log(lyricsFile.readAsText());
+
 let masterPlay = document.getElementById('masterPlay');
 let mainPlay = document.getElementById('main-play');
 let myTimeBar = document.getElementById('time-bar');
@@ -193,6 +203,13 @@ const defaultState = ()=>{
     document.getElementById('master-album-name').innerHTML = songs[songIndex].Album;;
     document.getElementById('current-song-name').innerHTML = songs[songIndex].songName;
     document.getElementById('current-album-name').innerHTML = songs[songIndex].Album;;
+
+    fetch(`./lyrics/1.txt`)
+    .then(response => response.text())
+    .then(text => {
+        // console.log('lyrics');
+        document.getElementById('song-lyrics-tag').innerText = text;
+    })
 }
 defaultState();
 // play to pause  &  pause to play icon transition
@@ -296,6 +313,12 @@ songItemPlay.forEach((element)=>{
         
         if(audioElement.paused || audioElement.currentTime <=0){
             audioElement.src = `./songs/${nIndex+1}.mp3`;
+            fetch(`./lyrics/${nIndex+1}.txt`)
+            .then(response => response.text())
+            .then(text => {
+                // console.log('lyrics');
+                document.getElementById('song-lyrics-tag').innerText = text;
+            })
             masterSongName.innerText = songs[songIndex].songName;
             audioElement.currentTime = 0;
             audioElement.play();
@@ -318,6 +341,12 @@ songItemPlay.forEach((element)=>{
         }
         else{
             audioElement.src = `./songs/${nIndex+1}.mp3`;
+            fetch(`./lyrics/${nIndex+1}.txt`)
+            .then(response => response.text())
+            .then(text => {
+                // console.log('lyrics');
+                document.getElementById('song-lyrics-tag').innerText = text;
+            })
             masterSongName.innerText = songs[songIndex].songName;
             audioElement.currentTi
             audioElement.play();
@@ -340,6 +369,12 @@ const playNextSong = ()=>{
     }
     nIndex = songIndex%7;
     audioElement.src = `./songs/${nIndex+1}.mp3`;
+    fetch(`./lyrics/${nIndex+1}.txt`)
+    .then(response => response.text())
+    .then(text => {
+        // console.log('lyrics');
+        document.getElementById('song-lyrics-tag').innerText = text;
+    })
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -362,6 +397,12 @@ const playPrevSong = ()=> {
     nIndex = songIndex%7;
 
     audioElement.src = `./songs/${nIndex+1}.mp3`;
+    fetch(`./lyrics/${nIndex+1}.txt`)
+        .then(response => response.text())
+        .then(text => {
+            // console.log('lyrics');
+            document.getElementById('song-lyrics-tag').innerText = text;
+        })
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
