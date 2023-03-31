@@ -553,9 +553,3 @@ aboutLink.forEach((element) =>{
         }
     });
 });
-
-// document.body.addEventListener('click', function (evt) {
-//     if (evt.target.className === 'fa-info') {
-//         alert("you've clicked on About: ",this)
-//     }
-// }, false);

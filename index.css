@@ -57,7 +57,8 @@ table, th, td {
     }
     #nav ul li{
         list-style:none;
-        margin: 10%;
+        margin: 0 10%;
+        padding: 6% 0;
         cursor:default;
     }
     #nav li i{
@@ -88,7 +89,8 @@ table, th, td {
         color: #b2adaddb;
         list-style: none;
         font-size: 15px;
-        margin: 7%;
+        margin: 0 7%;
+        padding: 4% 0;
         cursor: default;
     }
     .playLists ul li:hover{
@@ -412,7 +414,9 @@ pre a:hover{
 
 .volume-container {
     width: 127px; /* Width of the outside container */
-    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   /* The slider itself */
