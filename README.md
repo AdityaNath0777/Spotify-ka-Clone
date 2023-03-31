@@ -7,8 +7,8 @@
 [Spotify-ka-clone](https://spotify-ka-clone.vercel.app)
 ---
 ## Key-features
->The frontend code is almost entirely written by me
->The UI is inspired from Spotify
+>The frontend code is almost entirely written by me <br>
+>The UI is inspired from Spotify <br>
 >The UX is pretty similar to the original one too
 
 ## Built With
